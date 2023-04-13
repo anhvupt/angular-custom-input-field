@@ -17,6 +17,7 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "assets": [],
+            "tsConfig": "tsconfig.json",
             "styles": ["src/global_styles.css"],
             "scripts": []
           },
