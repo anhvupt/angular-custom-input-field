@@ -1,6 +1,6 @@
+import { FormFieldComponent } from './../../app/form-field/form-field.component';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormFieldComponent } from '../../form-field/form-field.component';
 
 @Component({
   standalone: true,
