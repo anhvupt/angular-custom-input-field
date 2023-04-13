@@ -8,11 +8,11 @@ import { CourseEditPageComponent } from './pages/course-edit-page/course-edit-pa
 @Component({
   selector: 'my-app',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [RouterOutlet],
   template: `
-    <h1>Edit Course</h1>
     <router-outlet />
   `,
+  styleUrls: ['./global_styles.scss']
 })
 export class App {
   name = 'Angular';
@@ -20,12 +20,13 @@ export class App {
 
 bootstrapApplication(App, {
   providers: [
+    CommonModule,
     provideRouter([
       { path: '', redirectTo: 'courses/details', pathMatch: 'full' },
       {
         path: 'courses',
-        children: [{ path: 'details', component: CourseEditPageComponent }],
-      },
-    ]),
-  ],
+        children: [{ path: 'details', component: CourseEditPageComponent }]
+      }
+    ])
+  ]
 });

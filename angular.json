@@ -8,7 +8,11 @@
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -18,7 +22,7 @@
             "main": "src/main.ts",
             "assets": [],
             "tsConfig": "tsconfig.json",
-            "styles": ["src/global_styles.css"],
+            "styles": ["src/global_styles.scss"],
             "scripts": []
           },
           "configurations": {
