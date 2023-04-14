@@ -17,7 +17,6 @@ export class CourseEditPageComponent implements OnInit {
     name: '',
     description: '',
     isTopRated: true,
-    length: '5h30m',
     type: 'angular',
   };
 
