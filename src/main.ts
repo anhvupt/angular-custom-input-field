@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideRouter, RouterOutlet } from '@angular/router';
 import { CourseEditPageComponent } from './pages/course-edit-page/course-edit-page.component';
-import { FormFieldComponent } from './pages/form-field/form-field.component';
+import { FormFieldComponent } from './components/form-field/form-field.component';
 
 @Component({
   selector: 'my-app',
