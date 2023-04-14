@@ -1,11 +1,50 @@
 <div class="mx-auto my-6 justify-items-end w-max">
   <h1 class="text-xl font-semibold">Edit Course</h1>
-  <form [formGroup]="form" class="mx-auto mt-3" action="">
+  <form [formGroup]="form" class="flex flex-col gap-2 mx-auto mt-3" action="">
+    <!-- required -->
     <section
       app-form-field
-      [label]="'name'"
+      [label]="{ value: 'Name', markAsRequired: true }"
       formControlName="name"
-      class="w-60 flex flex-col"
+      class="w-60 flex flex-col gap-1"
     ></section>
+
+    <!-- not required, project input -->
+    <section
+      app-form-field
+      [label]="'Description'"
+      formControlName="description"
+      class="w-60 flex flex-col gap-1"
+    ></section>
+
+    <!-- inline label -->
+    <section
+      app-form-field
+      [label]="'Is Top rated'"
+      [type]="'checkbox'"
+      formControlName="isTopRated"
+      class="mt-2 flex flex-row-reverse items-center justify-end gap-2"
+    ></section>
+
+    <!-- custom control -->
+    <section app-form-field [label]="'Type'" class="w-60 flex flex-col gap-1">
+      <ng-template #appFieldControl>
+        <select
+          formControlName="type"
+          class="
+            border border-gray-300
+            rounded-md
+            shadow-sm
+            active:border-gray-300
+          "
+          name=""
+          id=""
+        >
+          <option *ngFor="let item of courseTypes" [value]="item">
+            {{ item }}
+          </option>
+        </select>
+      </ng-template>
+    </section>
   </form>
 </div>

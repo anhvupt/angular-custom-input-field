@@ -3,7 +3,8 @@ export interface Course {
   name: string;
   description: string;
   date: Date;
-  length: number;
+  length: string;
+  type: 'fundamental' | 'angular' | '.net';
   authors: string[];
   isTopRated: boolean;
 }

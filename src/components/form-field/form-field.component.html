@@ -1,2 +1,36 @@
-<label for="">{{ label }}</label>
-<input type="text" [(ngModel)]="value" />
+<label *ngIf="!$any(label).hidden" for="" class=""
+  >{{ getLabel() }} <span *ngIf="$any(label).markAsRequired">*</span></label
+>
+<ng-container
+  *ngTemplateOutlet="inputTemplate ? inputTemplate : defaultInput"
+></ng-container>
+
+<ng-template #defaultInput
+  ><ng-container [ngSwitch]="type">
+    <ng-container *ngSwitchCase="'textarea'">
+      <textarea
+        class="
+          border border-gray-300
+          rounded-md
+          shadow-sm
+          active:border-gray-300
+        "
+        [(ngModel)]="value"
+      ></textarea>
+    </ng-container>
+
+    <input
+      *ngSwitchCase="'checkbox'"
+      class="border border-gray-300 rounded-md shadow-sm active:border-gray-300"
+      type="checkbox"
+      [(ngModel)]="value"
+    />
+
+    <input
+      *ngSwitchDefault
+      class="border border-gray-300 rounded-md shadow-sm active:border-gray-300"
+      [type]="type"
+      [(ngModel)]="value"
+    />
+  </ng-container>
+</ng-template>

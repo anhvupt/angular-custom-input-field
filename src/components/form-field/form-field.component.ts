@@ -1,4 +1,12 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {
+  Component,
+  ContentChild,
+  forwardRef,
+  Input,
+  OnInit,
+  TemplateRef,
+} from '@angular/core';
 import {
   ControlValueAccessor,
   FormsModule,
@@ -7,7 +15,7 @@ import {
 
 @Component({
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -35,7 +43,17 @@ export class FormFieldComponent implements ControlValueAccessor {
     }
   }
 
-  @Input() label = '';
+  @Input() label:
+    | string
+    | { value: string; markAsRequired?: true; hidden?: true } = '';
+
+  @Input() type: 'checkbox' | 'text' | 'number' | 'textarea' = 'text';
+  @ContentChild('appFieldControl', { static: false })
+  inputTemplate: TemplateRef<any>;
+
+  getLabel() {
+    return typeof this.label === 'string' ? this.label : this.label.value;
+  }
 
   writeValue(value: any) {
     this._value = value;
