@@ -32,17 +32,6 @@ export class FormFieldComponent implements ControlValueAccessor {
   onChange: (_: any) => {};
   onTouched: (_: any) => {};
 
-  get value(): any {
-    return this._value;
-  }
-
-  set value(v: any) {
-    if (v !== this._value) {
-      this._value = v;
-      this.onChange(v);
-    }
-  }
-
   @Input() label:
     | string
     | { value: string; markAsRequired?: true; hidden?: true } = '';
