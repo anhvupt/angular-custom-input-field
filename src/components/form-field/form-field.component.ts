@@ -60,7 +60,7 @@ export abstract class CustomFormControlBase implements ControlValueAccessor {
 export class FormFieldComponent extends CustomFormControlBase {
   @Input() label:
     | string
-    | { value: string; markAsRequired?: true; hidden?: true } = '';
+    | { value: string; markAsRequired?: boolean; hidden?: boolean } = '';
 
   @Input() type: 'checkbox' | 'text' | 'number' | 'textarea' = 'text';
   @ContentChild('appFieldControl', { static: false })
