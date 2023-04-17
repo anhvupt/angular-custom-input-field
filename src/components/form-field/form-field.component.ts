@@ -26,7 +26,7 @@ import {
   template: '',
 })
 export abstract class CustomFormControlBase implements ControlValueAccessor {
-  private _value: any;
+  protected _value: any;
   onChange: (_: any) => {};
   onTouched: (_: any) => {};
 
