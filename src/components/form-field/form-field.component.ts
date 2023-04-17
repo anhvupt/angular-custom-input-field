@@ -23,26 +23,12 @@ import {
       multi: true,
     },
   ],
-  selector: '[app-form-field]',
-  templateUrl: './form-field.component.html',
-  styleUrls: ['./form-field.component.css'],
+  template: '',
 })
-export class FormFieldComponent implements ControlValueAccessor {
+export abstract class CustomFormControlBase implements ControlValueAccessor {
   private _value: any;
   onChange: (_: any) => {};
   onTouched: (_: any) => {};
-
-  @Input() label:
-    | string
-    | { value: string; markAsRequired?: true; hidden?: true } = '';
-
-  @Input() type: 'checkbox' | 'text' | 'number' | 'textarea' = 'text';
-  @ContentChild('appFieldControl', { static: false })
-  inputTemplate: TemplateRef<any>;
-
-  getLabel() {
-    return typeof this.label === 'string' ? this.label : this.label.value;
-  }
 
   writeValue(value: any) {
     this._value = value;
@@ -54,5 +40,33 @@ export class FormFieldComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: (_: any) => {}) {
     this.onTouched = fn;
+  }
+}
+
+@Component({
+  standalone: true,
+  imports: [FormsModule, CommonModule],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => FormFieldComponent),
+      multi: true,
+    },
+  ],
+  selector: '[app-form-field]',
+  templateUrl: './form-field.component.html',
+  styleUrls: ['./form-field.component.css'],
+})
+export class FormFieldComponent extends CustomFormControlBase {
+  @Input() label:
+    | string
+    | { value: string; markAsRequired?: true; hidden?: true } = '';
+
+  @Input() type: 'checkbox' | 'text' | 'number' | 'textarea' = 'text';
+  @ContentChild('appFieldControl', { static: false })
+  inputTemplate: TemplateRef<any>;
+
+  getLabel() {
+    return typeof this.label === 'string' ? this.label : this.label.value;
   }
 }
