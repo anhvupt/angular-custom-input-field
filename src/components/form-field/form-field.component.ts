@@ -29,8 +29,8 @@ import {
 })
 export class FormFieldComponent implements ControlValueAccessor {
   private _value: any;
-  private onChange: (_: any) => {};
-  private onTouched: () => {};
+  onChange: (_: any) => {};
+  onTouched: (_: any) => {};
 
   get value(): any {
     return this._value;
@@ -63,7 +63,7 @@ export class FormFieldComponent implements ControlValueAccessor {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: () => {}) {
+  registerOnTouched(fn: (_: any) => {}) {
     this.onTouched = fn;
   }
 }
