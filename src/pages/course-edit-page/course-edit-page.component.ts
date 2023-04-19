@@ -15,7 +15,7 @@ import { NgFor } from '@angular/common';
 export class CourseEditPageComponent implements OnInit {
   private initialForm: PartialKeyOf<Course, any> = {
     name: '',
-    description: '',
+    description: 'kkkkkkkkkkk',
     isTopRated: true,
     type: 'angular',
   };

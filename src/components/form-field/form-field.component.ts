@@ -65,6 +65,9 @@ export class FormFieldComponent extends CustomFormControlBase {
   @Input() type: 'checkbox' | 'text' | 'number' | 'textarea' = 'text';
   @ContentChild('appFieldControl', { static: false })
   inputTemplate: TemplateRef<any>;
+  get value(): any {
+    return this._value;
+  }
 
   getLabel() {
     return typeof this.label === 'string' ? this.label : this.label.value;
