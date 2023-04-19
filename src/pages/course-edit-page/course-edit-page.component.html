@@ -27,8 +27,38 @@
     ></section>
 
     <!-- custom control -->
-    <section app-form-field [label]="'Type'" class="w-60 flex flex-col gap-1">
-      <ng-template #appFieldControl>
+    <section
+      app-form-field
+      [label]="'Type'"
+      [inputTemplate]="typeTpl"
+      class="w-60 flex flex-col gap-1"
+    >
+      <ng-template #typeTpl>
+        <select
+          formControlName="type"
+          class="
+            border border-gray-300
+            rounded-md
+            shadow-sm
+            active:border-gray-300
+          "
+          name=""
+          id=""
+        >
+          <option *ngFor="let item of courseTypes" [value]="item">
+            {{ item }}
+          </option>
+        </select>
+      </ng-template>
+    </section>
+
+    <section
+      app-form-field
+      [label]="'Type'"
+      [inputTemplate]="typeTpl2"
+      class="w-60 flex flex-col gap-1"
+    >
+      <ng-template #typeTpl2>
         <select
           formControlName="type"
           class="

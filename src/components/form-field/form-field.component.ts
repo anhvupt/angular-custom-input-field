@@ -63,8 +63,7 @@ export class FormFieldComponent extends CustomFormControlBase {
     | { value: string; markAsRequired?: boolean; hidden?: boolean } = '';
 
   @Input() type: 'checkbox' | 'text' | 'number' | 'textarea' = 'text';
-  @ContentChild('appFieldControl', { static: false })
-  inputTemplate: TemplateRef<any>;
+  @Input() inputTemplate: TemplateRef<any>;
   get value(): any {
     return this._value;
   }
