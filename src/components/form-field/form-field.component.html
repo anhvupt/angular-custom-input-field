@@ -26,7 +26,7 @@
       *ngSwitchCase="'checkbox'"
       class="border border-gray-300 rounded-md shadow-sm active:border-gray-300"
       type="checkbox"
-      [value]="value"
+      [checked]="value"
       (input)="onChange($any($event.target).checked)"
       (blur)="onTouched($any($event.target).checked)"
       (change)="writeValue($any($event.target).checked)"
