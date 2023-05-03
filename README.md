@@ -30,9 +30,9 @@ Here's an example of how to use the `FormFieldComponent` component in an Angular
 
 ```html
 <form [formGroup]="myForm" (submit)="onSubmit()">
-<app-form-field formControlName="firstName" label="First Name"></app-form-field>
-<app-form-field formControlName="lastName" label="Last Name"></app-form-field>
-<button type="submit">Submit</button>
+<section app-form-field formControlName="firstName" label="First Name"></section>
+<section app-form-field formControlName="lastName" label="Last Name"></section>
+<section app-form-field type="submit">Submit</section>
 </form>
 ```
 
