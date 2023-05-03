@@ -9,27 +9,19 @@
       class="w-60 flex flex-col gap-1"
     ></section>
 
-    <!-- not required, project input -->
+    <!-- not required -->
     <section
       app-form-field
-      [label]="'Description'"
+      label="Description"
+      type="textarea"
       formControlName="description"
       class="w-60 flex flex-col gap-1"
     ></section>
 
-    <!-- inline label -->
+    <!-- input projection -->
     <section
       app-form-field
-      [label]="'Is Top rated'"
-      [type]="'checkbox'"
-      formControlName="isTopRated"
-      class="mt-2 flex flex-row-reverse items-center justify-end gap-2"
-    ></section>
-
-    <!-- custom control -->
-    <section
-      app-form-field
-      [label]="'Type'"
+      label="Type"
       [inputTemplate]="typeTpl"
       class="w-60 flex flex-col gap-1"
     >
@@ -42,8 +34,6 @@
             shadow-sm
             active:border-gray-300
           "
-          name=""
-          id=""
         >
           <option *ngFor="let item of courseTypes" [value]="item">
             {{ item }}
@@ -52,29 +42,37 @@
       </ng-template>
     </section>
 
+    <!--To make sure the TemplateRefs works with multiple custom templates-->
     <section
       app-form-field
-      [label]="'Type'"
-      [inputTemplate]="typeTpl2"
+      label="Category"
+      [inputTemplate]="categoryTpl"
       class="w-60 flex flex-col gap-1"
     >
-      <ng-template #typeTpl2>
+      <ng-template #categoryTpl>
         <select
-          formControlName="type"
+          formControlName="category"
           class="
             border border-gray-300
             rounded-md
             shadow-sm
             active:border-gray-300
           "
-          name=""
-          id=""
         >
-          <option *ngFor="let item of courseTypes" [value]="item">
+          <option *ngFor="let item of courseCategories" [value]="item">
             {{ item }}
           </option>
         </select>
       </ng-template>
     </section>
+
+    <!-- style an inline checkbox with label -->
+    <section
+      app-form-field
+      label="Is Top rated"
+      type="checkbox"
+      formControlName="isTopRated"
+      class="mt-2 flex flex-row-reverse items-center justify-end gap-2"
+    ></section>
   </form>
 </div>

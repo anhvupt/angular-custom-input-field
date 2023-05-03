@@ -2,9 +2,7 @@ export interface Course {
   id: number;
   name: string;
   description: string;
-  date: Date;
-  length: string;
-  type: 'fundamental' | 'angular' | '.net';
-  authors: string[];
+  type: 'seminars' | 'tutorials' | 'exercises';
+  category: 'fundamental' | 'angular' | '.net';
   isTopRated: boolean;
 }
